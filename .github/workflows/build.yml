@@ -1,6 +1,45 @@
-name: Build ZMK firmware
-on: [push, pull_request, workflow_dispatch]
+name: "Corne Firmware"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+    - main
+    paths:
+    - .github/workflows/corne.yml
+    - corne/**
 
 jobs:
-  build:
+  corne-build:
     uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      build_matrix_path: corne/corne.yaml
+      config_path: corne
+      archive_name: corne-firmware
+
+  draw:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    permissions:
+      contents: write  # allow workflow to commit to the repo
+    with:
+      keymap_patterns: "corne/corne.keymap"        # path to the keymaps to parse
+      config_path: "keymap_drawer.config.yaml"  # config file, ignored if not exists
+      output_folder: "corne"            # path to save produced SVG and keymap YAML files
+      parse_args: ""  # map of extra args to pass to `keymap parse`, e.g. "corne:'-l Def Lwr Rse' cradio:''"
+      draw_args: ""   # map of extra args to pass to `keymap draw`, e.g. "corne:'-k corne_rotated' cradio:'-k paroxysm'"
+
+  corne-store:
+    if: always()
+    needs: corne-build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/download-artifact@v4
+      with:
+        path: corne
+        merge-multiple: true
+    - uses: sylvanld/action-storage@v1
+      with:
+        src: corne
+        dst: ./
+        storage-branch: main
