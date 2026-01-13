@@ -1,1 +1,9 @@
 .DS_Store
+
+# Build artifacts
+build/
+build-temp/
+*.uf2
+
+# ZMK cache
+.zmk-cache/
