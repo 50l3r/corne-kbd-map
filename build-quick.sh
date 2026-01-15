@@ -26,7 +26,7 @@ build_side() {
 
     # Ejecutar compilación en Docker con volúmenes persistentes
     docker run --rm \
-        -v "$(pwd)/corne:/workspace/config" \
+        -v "$(pwd)/config:/workspace/config" \
         -v "$CACHE_DIR:/workspace/zmk-cache" \
         -v "$BUILD_DIR:/workspace/build" \
         -w /workspace \
