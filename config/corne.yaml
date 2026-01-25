@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
-  default: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LCTRL, A, S, D, F, G, H, J, K, L, ;, '''', LSHFT, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, lower, SPACE, RET,
-    raise, RALT]
+  default: [TAB, Q, W, E, R, T, Y, U, I, O, P, BSPC, LSHIFT, A, S, D, F, G, H, J, K, L, ':', '''', LCTRL, Z, X, C, V, B, N, M, ',', ., /, ESC, LGUI, lower, SPACE,
+    RET, raise, RALT]
   lower:
   - TAB
   - '1'
@@ -15,19 +15,19 @@ layers:
   - '9'
   - '0'
   - BSPC
-  - BT CLR
+  - LSHIFT
   - {t: BT, h: '0'}
   - {t: BT, h: '1'}
   - {t: BT, h: '2'}
   - {t: BT, h: '3'}
   - {t: BT, h: '4'}
-  - LEFT
-  - DOWN
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - UP
-  - RIGHT
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - LSHFT
+  - BT CLR
   - RGB TOG
   - RGB HUI
   - RGB SAI
@@ -36,9 +36,9 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - LEFT
+  - DOWN
+  - RIGHT
   - LGUI
   - {type: held}
   - SPACE
@@ -58,7 +58,7 @@ layers:
   - (
   - )
   - BSPC
-  - LCTRL
+  - LSHIFT
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -70,7 +70,7 @@ layers:
   - ']'
   - \
   - '`'
-  - LSHFT
+  - LCTRL
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
